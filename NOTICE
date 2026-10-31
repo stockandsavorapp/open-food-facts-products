@@ -8,8 +8,9 @@ Individual contents are under the Database Contents License (DbCL) v1.0:
 https://opendatacommons.org/licenses/dbcl/1-0/
 
 Stock & Savor selected the products sold in the United States, Canada and
-Mexico that USDA FoodData Central does not list, and tidied their names and
-sizes. This derived database is offered under the same ODbL v1.0 (see
+Mexico that USDA FoodData Central does not list, tidied their names and
+sizes, and left out records that are not food or whose names could not be
+read. This derived database is offered under the same ODbL v1.0 (see
 LICENSE).
 
 Stock & Savor is not affiliated with or endorsed by Open Food Facts.

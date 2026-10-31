@@ -19,16 +19,20 @@ Get the files from [Releases](../../releases). Each release has:
 | `open_product-<version>.sqlite.gz` | gzipped SQLite database with one table, `open_product` ([schema](schema.sql)) |
 | `SHA256SUMS.txt` | checksums for both files |
 
-Release `2026.04-r6` has 612,674 products, built from an Open Food Facts
-export made on October 28, 2026.
+The latest release, `2026.04-r7`, has 611,313 products, built from an Open
+Food Facts export made on October 28, 2026. It fixes 3,603 names that were
+unreadable (written in another alphabet, placeholders, label text) and
+leaves out 1,361 records that aren't food or whose names say nothing about
+the product. `2026.04-r6` (612,674 products) is the earlier release.
 
 ## What's included
 
 There's one row per barcode for products Open Food Facts lists as sold in
 the United States, Canada or Mexico that USDA FoodData Central doesn't list.
-When a barcode has more than one record, only the newest is used. A small
-number of records are left out, such as ones that aren't food or whose
-wording can't be used.
+When a barcode has more than one record, only the newest is used. Records
+are left out when they aren't food (cosmetics, cleaning products, medicine),
+when their name says nothing about the product ("Test", a single letter),
+or when their wording can't be used.
 
 | Column | Meaning |
 |---|---|
@@ -48,8 +52,11 @@ Food Facts aren't included. For those, use Open Food Facts directly.
 
 Names were put in title case (with English, French and Spanish small words
 kept lowercase), the brand and size were moved into their own columns, and
-a reviewed list of corrections was applied. No words were added that the
-original record doesn't say.
+a reviewed list of corrections was applied. Names written in another
+alphabet were translated into English, and placeholder names were named
+from the record's own category; names in French, Spanish or another
+language written in the Latin alphabet stay as written. No facts were added
+that the original record doesn't say.
 
 ## License and credit
 
