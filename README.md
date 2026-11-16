@@ -58,6 +58,39 @@ from the record's own category; names in French, Spanish or another
 language written in the Latin alphabet stay as written. No facts were added
 that the original record doesn't say.
 
+## Grocery section labels (Aisle)
+
+The app also suggests which grocery list section a typed food belongs in,
+using a small model that runs on the phone (Aisle). Its training and test
+data is a second database derived from Open Food Facts, published here
+under the same ODbL as release
+[`aisle-2026.11-r5`](../../releases/tag/aisle-2026.11-r5):
+
+| File | What it is |
+|---|---|
+| `aisle-open-food-facts-derivative.jsonl.gz` | gzipped JSON Lines, one product name per line (231,148 rows) |
+| `manifest.json` | source export, how it was derived, fields, row counts and checksums |
+| `NOTICE.txt` | credit and license notice |
+| `SHA256SUMS.txt` | checksums |
+
+It was built from the Open Food Facts export of November 10, 2026:
+English-labelled products, each product's Open Food Facts categories
+matched to one of the app's grocery sections, products with the same name
+merged, and names kept only where the categories agree. Where the sources
+disagreed, a reviewed label (AI-assisted) or the app's own section for that
+kind of food was used. Each row says where its label came from.
+
+| Field | Meaning |
+|---|---|
+| `name`, `key` | product name as listed, and its lowercased matching key |
+| `kind` | `product`, a short name cut from a product name, or `nonfood` |
+| `split` | `train`, `dev` or `test` |
+| `barcode`, `brand` | from the Open Food Facts record, when present |
+| `off_category` | the Open Food Facts category group it mapped from |
+| `aisle_category` | the grocery section label used for training |
+| `label_source`, `teacher_label`, `teacher_sure`, `confidence` | where the label came from and how sure the review was |
+| `sold_in_us` | whether Open Food Facts lists it as sold in the United States |
+
 ## License and credit
 
 - The database is licensed under the **Open Database License (ODbL) v1.0**:
